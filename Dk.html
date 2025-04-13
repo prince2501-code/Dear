@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For You</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #ffe6f0;
+      overflow-x: hidden;
+    }
+
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .heart {
+      width: 20px;
+      height: 20px;
+      background-color: pink;
+      position: absolute;
+      animation: floatUp 10s infinite ease-in;
+      transform: rotate(45deg);
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background-color: pink;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        bottom: -50px;
+        left: calc(100% * var(--random));
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        bottom: 100%;
+        opacity: 0;
+      }
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      animation: fadeIn 2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      text-align: center;
+      color: #ff3399;
+      font-family: 'Pacifico', cursive;
+      font-size: 3em;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin: 20px 0 10px;
+      color: #333;
+    }
+
+    textarea {
+      width: 100%;
+      height: 80px;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+
+    button {
+      display: block;
+      margin: 30px auto 0;
+      padding: 15px 40px;
+      background-color: #ff3399;
+      color: white;
+      border: none;
+      border-radius: 40px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    button::after {
+      content: "❤️";
+      position: absolute;
+      right: -25px;
+      opacity: 0;
+      transition: opacity 0.3s ease, right 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff66aa;
+    }
+
+    button:hover::after {
+      right: -40px;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts">
+    <!-- Generate floating hearts -->
+    <script>
+      for (let i = 0; i < 20; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.setProperty('--random', Math.random());
+        heart.style.left = `${Math.random() * 100}%`;
+        heart.style.animationDuration = `${6 + Math.random() * 5}s`;
+        document.querySelector('.hearts').appendChild(heart);
+      }
+    </script>
+  </div>
+
+  <div class="container">
+    <h1>DEAR💞💞💞</h1>
+    <form action="https://formsubmit.co/princechahal2009@gmail.com" method="POST">
+      <label>1. What does happiness look like to you?</label>
+      <textarea name="happiness" required></textarea>
+
+      <label>2. What’s something you’ve always dreamed of doing but haven’t yet?</label>
+      <textarea name="dream" required></textarea>
+
+      <label>3. If you could go back and tell your younger self one thing, what would it be?</label>
+      <textarea name="advice_to_younger_self" required></textarea>
+
+      <label>4. What’s a memory that always makes you smile, no matter what?</label>
+      <textarea name="happy_memory" required></textarea>
+
+      <label>5. “So, on a scale of ‘just friends’ to ‘kinda like you,’ where do you think we’re at?”</label>
+      <textarea name="feelings_scale" required></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
